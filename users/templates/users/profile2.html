@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h2>User Profile</h2>
+    <h3>Username: {{ user.username }}</h3>
+    <p>Email: {{ user.email }}</p>
+
+    {% if user.userprofile %}
+    <h3>Profile Details</h3>
+    <p>Profile Photo: <img src="{{ user.userprofile.image.url }}" width="100"></p>
+    <p>Link: {{ user.userprofile.link }}</p>
+    <p>Bio: {{ user.userprofile.bio }}</p>
+    <p>Date of Birth: {{ user.userprofile.date_of_birth }}</p>
+    {% else %}
+    <p>Please complete your profile <a href="{% url 'complete_profile' %}">here</a>.</p>
+    {% endif %}
+{% endblock content %}
+
